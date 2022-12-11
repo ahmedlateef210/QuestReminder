@@ -40,6 +40,8 @@ export default function Schedule({ navigation }) {
   let checkEventItem = (item, isChecked) => {
     const eventRef = doc(db, 'events', item.id);
     setDoc(eventRef, { completed: isChecked }, { merge: true });
+    const userRef = doc(db, "users", auth.currentUser.uid)
+    setDoc(userRef, { user_coins: user_coins + 50}, { merge: true});
   };
 
   let deleteEvent = async (eventId) => {

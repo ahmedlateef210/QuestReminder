@@ -26,9 +26,10 @@ export default function UserProfile({ navigation }) {
     });
   }
   let usePotion = () => {
-    if (user.user_potionCount > 0) {
-      user.user_potionCount -= 1
-      user.user_health += 50
+    const userRef = doc(db, "users", auth.currentUser.uid)
+    if (userRef.user_potionCount > 0) {
+      setDoc(userRef, { user_coins: user_coins - 50}, { merge: true});
+      setDoc(userRef, { user_potionCount: user_potionCount + 1}, { merge: true});
     }
   }
   return (

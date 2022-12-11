@@ -39,7 +39,9 @@ export default function ToDo({ navigation }) {
 
   let checkToDoItem = (item, isChecked) => {
     const toDoRef = doc(db, 'todos', item.id);
-    setDoc(toDoRef, { completed: isChecked }, { merge: true });
+    setDoc(toDoRef, { todo_check: isChecked }, { merge: true });
+    const userRef = doc(db, "users", auth.currentUser.uid)
+    setDoc(userRef, { user_coins: user_coins + 50}, { merge: true});
   };
 
   let deleteToDo = async (toDoId) => {

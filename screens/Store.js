@@ -20,8 +20,9 @@ export default function Store({ navigation }) {
   }, [])
 
   let buyPotion = () => {
-    user.user_potionCount += 1
-    user.user_Coins -= 50
+    const userRef = doc(db, "users", auth.currentUser.uid)
+    setDoc(userRef, { user_coins: user_coins - 50}, { merge: true});
+    setDoc(userRef, { user_potionCount: user_potionCount + 1}, { merge: true});
   }
 
   return (
