@@ -23,7 +23,7 @@ export default function AddToDoModal(props) {
         <Button title="Cancel" onPress={props.onClose} />
         <Button title="OK" onPress={() => {
           props.addToDo(todoName, todoFreq);
-          setTodo("");
+          setTodoName("");
           setTodoFreq("");
           props.onClose();
         }} />

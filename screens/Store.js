@@ -21,8 +21,8 @@ export default function Store({ navigation }) {
 
   let buyPotion = () => {
     const userRef = doc(db, "users", auth.currentUser.uid)
-    setDoc(userRef, { user_coins: user_coins - 50}, { merge: true});
-    setDoc(userRef, { user_potionCount: user_potionCount + 1}, { merge: true});
+    setDoc(userRef, { user_coins: user.user_coins - 50}, { merge: true});
+    setDoc(userRef, { user_potionCount: user.user_potionCount + 1}, { merge: true});
   }
 
   return (
@@ -33,7 +33,7 @@ export default function Store({ navigation }) {
       </View>
       <View
       style={[AppStyles.rowContainer, AppStyles.rightAligned, AppStyles.rightMargin]}>
-        <Text style={[AppStyles.lightText]}>Coins: {user.user_Coins}</Text>
+        <Text style={[AppStyles.lightText]}>Coins: {user.user_coins}</Text>
       </View>
       <View style={AppStyles.backgroundCover} >
         <Text style={[AppStyles.lightText, AppStyles.header]}>Store</Text>
